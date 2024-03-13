@@ -10,13 +10,13 @@ const main = async () => {
 
 		const page = await browser.newPage(); //start a new page
 
-		await page.goto("https://www.wikipedia.org/"); // go to wikipedia's page
+		await page.goto("https://pt.wikipedia.org/wiki/Raspagem_de_dados"); // go to wikipedia's page on data scraping
 
-		await page.waitForSelector(".central-textlogo-wrapper"); // wait until the central text logo is fully loaded
+		await page.waitForSelector("#mw-content-text"); // wait until the text selector is loaded
 
 		// use page.evaluate to simulate what you can do on browser's console
 		const html = await page.evaluate(() =>{
-			return document.querySelector(".central-textlogo-wrapper").textContent.trim(); // return the text from the central logo
+			return document.querySelector("#mw-content-text").textContent.trim() // return the text from article
 		})
 
 		console.log({ html });
