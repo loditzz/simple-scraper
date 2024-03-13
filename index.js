@@ -4,6 +4,8 @@ const main = async () => {
 	// define browser outside try/catch to correctly close it in case of error
 	let browser;
 	try {
+		const textSelector = "#mw-content-text";
+		
 		browser = await puppeteer.launch({
 			headless: true, // change to false to *see* the browser
 		});
@@ -12,14 +14,14 @@ const main = async () => {
 
 		await page.goto("https://pt.wikipedia.org/wiki/Raspagem_de_dados"); // go to wikipedia's page on data scraping
 
-		await page.waitForSelector("#mw-content-text"); // wait until the text selector is loaded
+		await page.waitForSelector(textSelector); // wait until the text selector is loaded
 
 		// use page.evaluate to simulate what you can do on browser's console
-		const html = await page.evaluate(() =>{
-			return document.querySelector("#mw-content-text").textContent.trim() // return the text from article
-		})
+		const pageText = await page.evaluate((selector) =>{
+			return document.querySelector(selector).textContent.trim() // return the text from article
+		}, textSelector)
 
-		console.log({ html });
+		console.log({ pageText });
 
 		await browser.close();
 		return "All done"
