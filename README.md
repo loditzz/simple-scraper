@@ -46,9 +46,9 @@ This command will launch Puppeteer, navigate to the Wikipedia page, extract the 
 Contributions to Simple Scraper are welcome! If you'd like to contribute to the project, please follow these steps:
 
 1. Fork the repository on GitHub.
-2. Create a new branch from the `main` branch.
+2. Create a new branch from the `master` branch.
 3. Make your changes and commit them to your branch.
 4. Push your changes to your fork.
-5. Submit a pull request to the `main` branch of the original repository.
+5. Submit a pull request to the `master` branch of the original repository.
 
 Please ensure that your contributions adhere to the project's coding standards and guidelines.
